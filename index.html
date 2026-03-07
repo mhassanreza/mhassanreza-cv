@@ -753,7 +753,7 @@
         /* ===== PROJECTS SECTION ===== */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
         }
 
@@ -811,10 +811,14 @@
         }
 
         .project-desc {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             color: var(--gray);
-            line-height: 1.7;
+            line-height: 1.65;
             flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .project-tags {
@@ -825,13 +829,14 @@
         }
 
         .project-tags span {
-            padding: 0.25rem 0.65rem;
+            padding: 0.2rem 0.55rem;
             background: var(--light);
             border-radius: 6px;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 500;
             color: var(--gray);
             font-family: 'JetBrains Mono', monospace;
+            white-space: nowrap;
         }
 
         .project-links {
@@ -874,10 +879,11 @@
             gap: 0.3rem;
             padding: 0.25rem 0.65rem;
             border-radius: 6px;
-            font-size: 0.72rem;
+            font-size: 0.68rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.04em;
+            white-space: nowrap;
         }
 
         .platform-badge.android {
@@ -1125,10 +1131,15 @@
             .nav-links { display: none; }
         }
 
+        @media (max-width: 1080px) {
+            .projects-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
         @media (max-width: 640px) {
             .hero-name { font-size: 2.25rem; }
             .section-title { font-size: 1.75rem; }
-            .skills-grid, .projects-grid { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: 1fr; }
             .hero-stats { gap: 1.5rem; }
             .stat-number { font-size: 1.75rem; }
             .edu-card { flex-direction: column; text-align: center; }
@@ -1651,13 +1662,13 @@
                     </div>
                     <h3 class="project-name">CAST4k</h3>
                     <p class="project-desc">
-                        A smart IPTV media player app with multi-device streaming, profile management, QR code sharing, continue watching, EPG (Electronic Program Guide), multi-language subtitle support, and personalized categories. Optimized for phones, foldables, tablets, Android TVs, and Samsung Smart TVs via Tizen Studio.
+                        Smart IPTV media player with multi-device streaming, profile management, QR code sharing, EPG, multi-language subtitles, and personalized categories. Optimized across phones, tablets, TVs, and Samsung Smart TVs.
                     </p>
                     <div class="project-platforms">
                         <span class="platform-badge android">Android</span>
                         <span class="platform-badge ios">iOS</span>
-                        <span class="platform-badge tv">Android TV</span>
-                        <span class="platform-badge cross">Samsung Tizen</span>
+                        <span class="platform-badge tv">TV</span>
+                        <span class="platform-badge cross">Tizen</span>
                     </div>
                     <div class="project-tags">
                         <span>Kotlin</span>
