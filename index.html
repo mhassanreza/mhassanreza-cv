@@ -1136,17 +1136,45 @@
         }
 
         @media (max-width: 640px) {
+            .hero { padding: 1.5rem 1rem; min-height: auto; padding-top: 3rem; }
             .hero-name { font-size: 2.25rem; }
+            .hero-title { font-size: 1.1rem; }
+            .hero-summary { font-size: 0.95rem; }
+            .section { padding: 3rem 1rem; }
             .section-title { font-size: 1.75rem; }
+            .section-subtitle { font-size: 0.95rem; }
             .skills-grid { grid-template-columns: 1fr; }
             .projects-grid { grid-template-columns: 1fr; }
-            .hero-stats { gap: 1.5rem; }
+            .hero-stats { gap: 1.25rem; flex-wrap: wrap; }
             .stat-number { font-size: 1.75rem; }
-            .edu-card { flex-direction: column; text-align: center; }
+            .stat-label { font-size: 0.7rem; }
+            .hero-actions { flex-direction: column; align-items: center; }
+            .btn { width: 100%; justify-content: center; }
+            .edu-card { flex-direction: column; text-align: center; padding: 1.5rem; }
             .edu-meta { justify-content: center; }
+            .edu-degree { font-size: 1.1rem; }
             .timeline { padding-left: 2.5rem; }
             .timeline-dot { left: -2.5rem; width: 26px; height: 26px; }
             .timeline-header { flex-direction: column; }
+            .timeline-card { padding: 1.25rem; }
+            .timeline-role { font-size: 1.05rem; }
+            .hero-card-inner { padding: 1.5rem; }
+            .contact-item { padding: 0.5rem 0.75rem; }
+            .contact-value { font-size: 0.82rem; }
+            .lang-card { padding: 1.5rem 2rem; min-width: 160px; }
+            .languages-grid { gap: 1rem; }
+            .footer { padding: 2rem 1rem; }
+            .footer-links { flex-direction: column; align-items: center; gap: 0.75rem; }
+            .back-to-top, .theme-toggle { width: 40px; height: 40px; bottom: 1rem; }
+            .back-to-top { right: 1rem; }
+            .theme-toggle { left: 1rem; }
+        }
+
+        @media (max-width: 380px) {
+            .hero-name { font-size: 1.85rem; }
+            .hero-stats { gap: 1rem; }
+            .stat-number { font-size: 1.5rem; }
+            .card-avatar { width: 90px; height: 90px; }
         }
 
         /* ===== BACK TO TOP ===== */
