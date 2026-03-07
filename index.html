@@ -360,8 +360,8 @@
         }
 
         .card-avatar {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             background: var(--gradient-1);
             display: flex;
@@ -372,6 +372,15 @@
             color: white;
             margin: 0 auto 1.5rem;
             box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+            overflow: hidden;
+            border: 4px solid var(--white);
+            outline: 3px solid var(--primary);
+        }
+
+        .card-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .contact-list {
@@ -1310,7 +1319,7 @@
             </div>
             <div class="hero-card">
                 <div class="hero-card-inner">
-                    <div class="card-avatar">HR</div>
+                    <div class="card-avatar"><img src="profile.jpg" alt="Hassan Raza"></div>
                     <div class="contact-list">
                         <a href="tel:+971585578686" class="contact-item">
                             <div class="contact-icon">
