@@ -42,6 +42,7 @@
 
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         body {
@@ -2041,19 +2042,10 @@
     </button>
 
     <script>
-        // Sticky Nav - show on scroll up, hide on scroll down
+        // Sticky Nav
         const nav = document.getElementById('nav');
-        let lastScroll = 0;
         window.addEventListener('scroll', () => {
-            const cur = window.scrollY;
-            if (cur <= 100) {
-                nav.classList.remove('visible');
-            } else if (cur < lastScroll) {
-                nav.classList.add('visible');
-            } else {
-                nav.classList.remove('visible');
-            }
-            lastScroll = cur;
+            nav.classList.toggle('visible', window.scrollY > 100);
         });
 
         // Back to Top
