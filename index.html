@@ -125,6 +125,25 @@
             background: var(--primary-light);
         }
 
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--dark);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
         .nav-download {
             background: var(--gradient-1);
             color: white !important;
@@ -1123,12 +1142,27 @@
             }
 
             .hero-name { font-size: 2.75rem; }
-            .hero-summary { margin-left: auto; margin-right: auto; }
-            .hero-stats { justify-content: center; }
+            .hero-summary { margin-left: auto; margin-right: auto; max-width: 100%; }
+            .hero-stats { justify-content: center; flex-wrap: wrap; }
             .hero-actions { justify-content: center; }
             .hero-card { max-width: 400px; margin: 0 auto; }
 
-            .nav-links { display: none; }
+            .nav-toggle { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1rem;
+                border-bottom: 1px solid var(--light-3);
+                box-shadow: var(--shadow-md);
+            }
+            .nav-links.open { display: flex; }
+            .nav-links li { width: 100%; }
+            .nav-links a { display: block; width: 100%; text-align: center; padding: 0.75rem 1rem !important; }
         }
 
         @media (max-width: 1080px) {
@@ -1136,16 +1170,17 @@
         }
 
         @media (max-width: 640px) {
-            .hero { padding: 1.5rem 1rem; min-height: auto; padding-top: 3rem; }
+            .hero { padding: 1.5rem 1rem; min-height: auto; padding-top: 3rem; overflow: visible; }
             .hero-name { font-size: 2.25rem; }
-            .hero-title { font-size: 1.1rem; }
-            .hero-summary { font-size: 0.95rem; }
+            .hero-title { font-size: 1rem; }
+            .hero-summary { font-size: 0.9rem; overflow-wrap: break-word; }
             .section { padding: 3rem 1rem; }
             .section-title { font-size: 1.75rem; }
             .section-subtitle { font-size: 0.95rem; }
             .skills-grid { grid-template-columns: 1fr; }
             .projects-grid { grid-template-columns: 1fr; }
-            .hero-stats { gap: 1.25rem; flex-wrap: wrap; }
+            .hero-stats { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+            .stat { min-width: calc(50% - 1rem); }
             .stat-number { font-size: 1.75rem; }
             .stat-label { font-size: 0.7rem; }
             .hero-actions { flex-direction: column; align-items: center; }
@@ -1172,8 +1207,10 @@
 
         @media (max-width: 380px) {
             .hero-name { font-size: 1.85rem; }
-            .hero-stats { gap: 1rem; }
+            .hero-title { font-size: 0.95rem; }
+            .hero-stats { gap: 0.75rem; }
             .stat-number { font-size: 1.5rem; }
+            .stat-label { font-size: 0.65rem; }
             .card-avatar { width: 90px; height: 90px; }
         }
 
@@ -1255,6 +1292,7 @@
             --light-2: #1e293b;
             --light-3: #334155;
             --white: #1e293b;
+            --primary-light: rgba(37, 99, 235, 0.15);
             background: #0f172a;
         }
 
@@ -1291,6 +1329,14 @@
         body.dark .bg-pattern {
             opacity: 0.15;
         }
+
+        body.dark .nav-toggle span {
+            background: var(--dark);
+        }
+
+        body.dark .nav-links.open {
+            background: #1e293b;
+        }
     </style>
 </head>
 <body>
@@ -1301,6 +1347,9 @@
     <nav class="nav" id="nav">
         <div class="nav-inner">
             <div class="nav-brand">Hassan<span> </span>Raza</div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -2049,6 +2098,16 @@
             const isDark = document.body.classList.contains('dark');
             sunIcon.style.display = isDark ? 'none' : 'block';
             moonIcon.style.display = isDark ? 'block' : 'none';
+        });
+
+        // Mobile Nav Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.querySelector('.nav-links');
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('open'));
         });
 
         // Active nav link on scroll
