@@ -2041,10 +2041,19 @@
     </button>
 
     <script>
-        // Sticky Nav
+        // Sticky Nav - show on scroll up, hide on scroll down
         const nav = document.getElementById('nav');
+        let lastScroll = 0;
         window.addEventListener('scroll', () => {
-            nav.classList.toggle('visible', window.scrollY > 300);
+            const cur = window.scrollY;
+            if (cur <= 100) {
+                nav.classList.remove('visible');
+            } else if (cur < lastScroll) {
+                nav.classList.add('visible');
+            } else {
+                nav.classList.remove('visible');
+            }
+            lastScroll = cur;
         });
 
         // Back to Top
